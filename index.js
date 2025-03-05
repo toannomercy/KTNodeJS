@@ -8,6 +8,8 @@ const port = 3000;
 
 const homeRoutes = require('./apps/controllers/homecontroller');
 const adminRoutes = require('./apps/controllers/admincontroller');
+const tableRoutes = require('./apps/controllers/tablecontroller');
+const mapRoutes = require('./apps/controllers/mapcontroller');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -26,6 +28,14 @@ app.get('/', (req, res) => {
 
 app.get('/admin', (req, res) => {
     res.render('admin/adminPage')
+});
+
+app.get('/tables', (req, res) => {
+    res.render('admin/tables')
+});
+
+app.get('/maps', (req, res) => {
+    res.render('admin/maps')
 });
 
 app.listen(port, () => {
