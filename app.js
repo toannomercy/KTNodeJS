@@ -8,12 +8,14 @@ const port = 3000;
 
 const homeRoutes = require('./apps/controllers/homecontroller');
 const adminRoutes = require('./apps/controllers/admincontroller');
+const adwidgetinRoutes = require('./apps/controllers/admincontroller');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.use('/', homeRoutes);
 app.use('/admin', adminRoutes);
+app.use('/admin/widget', adwidgetinRoutes);
 
 app.use("/static", express.static(__dirname + "/public"));
 
@@ -26,6 +28,9 @@ app.get('/', (req, res) => {
 
 app.get('/admin', (req, res) => {
     res.render('admin/adminPage')
+});
+app.get('/widgets', (req, res) => {
+    res.render('admin/adminWidgets');
 });
 
 app.listen(port, () => {
